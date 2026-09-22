@@ -1,0 +1,76 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sticker Creator</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="fondo">
+            <header>
+                <h1 class="title">Sticker</h1>
+                <h1 class="title2">Creator</h1>
+            </header>
+            <div>
+                <input accept="image/*" type="file" name="file" id="fileUpload">
+                <button type="button" id="UploadButton">Upload file </button>
+            </div>
+
+            
+        </div>
+        <div id="extensible" class="not-visible">
+                <div>
+                    <div id="parameters">
+                        <div id="section-border">
+                            <h3 class="main-parameter">Border</h3>
+                            <label for="grosor">Border thickness</label>
+                            <input type="range" min="0" max="50" value="5" id="grosor">
+                            <label for="borderRadius">Border radius</label>
+                            <input type="range" min="0" max="256" value="0" id="borderRadius">
+                            <label for="borderColor">Borde color</label>
+                            <input type="color" value="#000000" id="borderColor">
+                        </div>
+                        <div id="section-shadow">
+                            <h3 class="main-parameter">shadow</h3>
+                            <label for="shadowX">X displacement</label>
+                            <input type="range" min="-50" max="50" value="0" id="shadowX">
+                            <label for="shadowY">Y displacement</label>
+                            <input type="range" min="-50" max="50" value="0" id="shadowY">
+                            <label for="shadowBlur">Shadows blur</label>
+                            <input type="range" min="0" max="100" value="10" id="shadowBlur">
+                            <label for="shadowOpacity">Shadow opacity</label>
+                            <input type="range" min="0" max="100" value="80" id="shadowOpacity">
+                            <label for="shadowColor">Shadow color</label>
+                            <input type="color" value="#000000" id="shadowColor">
+                        
+                        </div>
+                        <div id="section-shape">
+                            <h3 class="main-parameter">Shape</h3>
+                            <button type="button" id="square">Square</button>
+                            <button type="button" id="circle">Circle</button>
+                            <button type="button" id="rounded">Rounded</button>
+                            <button type="button" id="hexagon">Hexagon</button>
+                            <div class="not-visible">
+                                <label for="rounding">Radius</label>
+                                <input type="range" min="0" max="256" value="32" id="rounding">
+                            </div>
+                        </div>
+                        <button type="button" id="addText">Add text</button>
+                        <label for="stickerText">Text:</label>
+                        <input type="text" id="stickerText">
+                        <label for="fontsize">Font size</label>
+                        <input type="range" max="120" min="12" value="32" id="fontsize">
+                        <label for="colorText">Text color</label>
+                        <input type="color" id="colorText">
+                        <label for="pesoText">Text weight</label>
+                        <input type="range" min="100" max="900" step="100" value="400" id="pesoText">
+                        <button type="button" id="export">Export to...</button>
+                        <select id="exportFormat"><option>PNG</option><option>WebP</option><option>JPEG</option></select>
+                        <select id="exportSize"><option>512x512</option><option>256x256</option><option>128x128</option></select>
+                    </div>
+                    <canvas id="canvas" width="512" height="512"></canvas>
+
+                </div>
+            </div>
+    </body>
+</html>
