@@ -40,12 +40,18 @@ body {
 }
 
 .fondo button {
+    font-weight: 200;
+    font-size: 1.5rem;
     border: none;
     color: white;
     cursor: pointer;
     background: #f6975c;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: background 0.2s ease;
+}
+
+#fileUpload {
+    display: none;
 }
 
 .fondo button:hover{
@@ -83,7 +89,7 @@ body {
 #parameters h3.main-parameter{
     font-size: 1rem;
     text-transform: uppercase;
-    color: #5cf697;
+    color: #f6975c;
 }
 
 #section-border,
@@ -98,10 +104,11 @@ body {
 
 #parameters input[type="range"]{
     width: 100%;
-    accent-color: #5cf697;
+    accent-color: #f6975c;
 }
 
-#parameters input[type="color"] {
+#parameters input[type="color"],
+#colorText {
     border: none;
     cursor: pointer;
     border-radius: 6px;
@@ -142,9 +149,9 @@ body {
 
 
 #section-shape button.active{
-    background: #5cf697;
+    background: #f6975c;
     color: #1e1e1e;
-    border-color: #5cf697;
+    border-color: #f6975c;
 }
 
 #addText,
@@ -154,13 +161,13 @@ body {
     color: #1e1e1e;
     cursor: pointer;
     font-weight: 600;
-    background: #5cf697;
+    background: #f6975c;
 }
 
 
 #addText:hover,
 #export:hover {
-    background: #4d3bed;
+    background: #f6975c;
     color: white;
 }
 
