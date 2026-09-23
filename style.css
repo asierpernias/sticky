@@ -24,18 +24,22 @@ body {
 }
 
 .title {
+    user-select: none;
     padding: 0;
     margin: 0;
     font-weight: 1000;
-    font-size: 10rem;
+    font-size: 18rem;
+    text-shadow: 4px 6px #ff7f2f;
 }
 
 .title2 {
     padding: 0;
+    user-select: none;
     margin: 0;
     margin-bottom: 70px;
-    font-size: 6rem;
+    font-size: 9rem;
     font-weight: 400;
+    text-shadow: 1px 1.5px white;
     color: #f6975c;
 }
 
@@ -55,7 +59,7 @@ body {
 }
 
 .fondo button:hover{
-    background-color: #ff873c;
+    background-color: #ff7f2f;
 }
 
 #extensible {
@@ -89,7 +93,7 @@ body {
 #parameters h3.main-parameter{
     font-size: 1rem;
     text-transform: uppercase;
-    color: #f6975c;
+    color: #f6965a;
 }
 
 #section-border,
@@ -149,7 +153,7 @@ body {
 
 
 #section-shape button.active{
-    background: #f6975c;
+    background: #ff7f2f;
     color: #1e1e1e;
     border-color: #f6975c;
 }
@@ -167,7 +171,7 @@ body {
 
 #addText:hover,
 #export:hover {
-    background: #f6975c;
+    background: #ff7f2f;
     color: white;
 }
 

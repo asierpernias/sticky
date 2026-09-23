@@ -243,3 +243,36 @@ document.getElementById('rounded').addEventListener('click',(event) => {
     currentShape = 'rounded';
     drawCanvasImgae();
 }); 
+
+document.getElementById('export').addEventListener(('click'), () => {
+    const format = document.getElementById('exportFormat').value;
+    const sizeOption = document.getElementById('exportSize').value;
+
+    let size = parseInt(sizeOption.split('x')[0], 10);
+
+    let types =  {
+        'PNG': 'image/png',
+        'WebP': 'image/jwebp',
+        'JPEG': 'image/jepg',
+    };
+
+    const mimeType = types[format];
+    const exportCanvas = document.createElement('canvas');
+    exportCanvas.width = size;
+    exportCanvas.height = size;
+    const exportCtx = exportCanvas.getContext('2d');
+
+    if (format == 'JEPG'){
+        exportCtx.fillStyle = '#ffffff';
+        exportCtx.fillRect(0,0,size, size);
+    }
+
+    exportCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, size, size);
+
+    const dataURL = exportCanvas.toDataURL(mimeType, 1);
+
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = `sticker-${size}x${size}.${format.toLowerCase()}`;
+    link.click();
+});;
