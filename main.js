@@ -11,7 +11,7 @@ let borderColor = '#000000';
 let shadowX = 0;
 let shadowY = 0;
 let shadowBlur = 0;
-let shadowOpacity = 0.8;
+let shadowOpacity = 80;
 let shadowColorValue = '#000000';
 
 let currentImg = null;
@@ -56,11 +56,11 @@ function tracePath(x, y, w, h, shape, radius) {
         const cy = y + h /2;
         const r = Math.min(w, h) / 2;
         for (let i = 0; i < 6; i++){
-            const angle = (Math.PI / 3) * 1 - Math.PI / 2;
+            const angle = (Math.PI / 3) * i - Math.PI / 2;
             const px = cx + r * Math.cos(angle);
             const py = cy + r * Math.sin(angle);
             if (i === 0) ctx.moveTo(px, py);
-            else ctx.moveTo(px, py)
+            else ctx.lineTo(px, py)
         } 
     } else {
         ctx.rect(x, y, w, h);
@@ -73,6 +73,7 @@ function fileClick(){
 
 function drawCanvasImgae(){
     if (!currentImg) return;
+    ctx.clearRect(0,0,canvas.width, canvas.height)
     const escala = Math.min(
         canvas.width / currentImg.width,
         canvas.height / currentImg.height
@@ -80,15 +81,15 @@ function drawCanvasImgae(){
 
     let escalaFinal = escala * zoom;
 
-    const borderX = imgX - borderThickness;
-    const borderY = imgY - borderThickness;
-    const borderW = imgW + 2 * borderThickness;
-    const borderH = imgH + 2 * borderThickness;
-
     const imgW = currentImg.width * escalaFinal;
     const imgH = currentImg.height * escalaFinal;
     const imgX = (canvas.width - imgW) / 2 + offsetX;
     const imgY = (canvas.height - imgH) / 2 + offsetY;
+
+    const borderX = imgX - borderThickness;
+    const borderY = imgY - borderThickness;
+    const borderW = imgW + 2 * borderThickness;
+    const borderH = imgH + 2 * borderThickness;
 
     if (borderThickness > 0){
         ctx.save();
@@ -109,6 +110,7 @@ function drawCanvasImgae(){
     tracePath(imgX, imgY, imgW, imgH, currentShape, borderRadius);
     ctx.clip();
     ctx.drawImage(currentImg, imgX, imgY, imgW, imgH);
+    ctx.restore();
 }
 
 canvas.addEventListener('wheel', (event) => {
@@ -160,3 +162,84 @@ function hexToRgba(hex, opacityPercent){
     const b = parseInt(hex.slice(5,7), 16);
     return `rgba(${r}, ${g}, ${b}, ${opacityPercent / 100})`;
 }
+
+// Linking variable with sliders
+
+document.getElementById('grosor').addEventListener('input', (event) => {
+    borderThickness = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('borderRadius').addEventListener('input', (event) => {
+    borderRadius = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('shadowX').addEventListener('input', (event) => {
+    shadowX = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('shadowY').addEventListener('input', (event) => {
+    shadowY = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('shadowBlur').addEventListener('input', (event) => {
+    shadowBlur = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('shadowOpacity').addEventListener('input', (event) => {
+    shadowOpacity = Number(event.target.value);
+    drawCanvasImgae();
+});
+
+document.getElementById('shadowColor').addEventListener('input', (event) => {
+    shadowColorValue = event.target.value;
+    drawCanvasImgae();
+});
+
+document.getElementById('borderColor').addEventListener('input', (event) => {
+    borderColor = event.target.value;
+    drawCanvasImgae()
+});
+
+document.getElementById('square').addEventListener('click',(event) => {
+    document.querySelectorAll('#section-shape button').forEach((btn) => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    currentShape = 'square';
+    drawCanvasImgae();
+}); 
+
+
+document.getElementById('hexagon').addEventListener('click',(event) => {
+    document.querySelectorAll('#section-shape button').forEach((btn) => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    currentShape = 'hexagon';
+    drawCanvasImgae();
+}); 
+
+
+document.getElementById('circle').addEventListener('click',(event) => {
+    document.querySelectorAll('#section-shape button').forEach((btn) => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    currentShape = 'circle';
+    drawCanvasImgae();
+}); 
+
+
+document.getElementById('rounded').addEventListener('click',(event) => {
+    document.querySelectorAll('#section-shape button').forEach((btn) => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
+    currentShape = 'rounded';
+    drawCanvasImgae();
+}); 
