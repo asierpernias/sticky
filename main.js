@@ -163,35 +163,48 @@ function hexToRgba(hex, opacityPercent){
     return `rgba(${r}, ${g}, ${b}, ${opacityPercent / 100})`;
 }
 
+const grossorValueSpan = document.getElementById('grossorValue'); 
+const borderRadiusSpan = document.getElementById('borderRadiusValue'); 
+const shadowXSpan = document.getElementById('shadowXValue'); 
+const shadowYSpan = document.getElementById('shadowYValue'); 
+const shadowBlurSpan = document.getElementById('shadowBlurValue'); 
+const shadowOpacitySpan = document.getElementById('shadowOpacityValue'); 
+
 // Linking variable with sliders
 
 document.getElementById('grosor').addEventListener('input', (event) => {
     borderThickness = Number(event.target.value);
+    grossorValueSpan.textContent = `${borderThickness}px`;
     drawCanvasImgae();
 });
 
 document.getElementById('borderRadius').addEventListener('input', (event) => {
     borderRadius = Number(event.target.value);
+    borderRadiusSpan.textContent = `${borderRadius}px`;
     drawCanvasImgae();
 });
 
 document.getElementById('shadowX').addEventListener('input', (event) => {
     shadowX = Number(event.target.value);
+    shadowXSpan.textContent = `${shadowX}px`;
     drawCanvasImgae();
 });
 
 document.getElementById('shadowY').addEventListener('input', (event) => {
     shadowY = Number(event.target.value);
+    shadowYSpan.textContent = `${shadowY}px`;
     drawCanvasImgae();
 });
 
 document.getElementById('shadowBlur').addEventListener('input', (event) => {
     shadowBlur = Number(event.target.value);
+    shadowBlurSpan.textContent = `${shadowBlur}px`;
     drawCanvasImgae();
 });
 
 document.getElementById('shadowOpacity').addEventListener('input', (event) => {
     shadowOpacity = Number(event.target.value);
+    shadowOpacity.textContent = `${shadowOpacity}px`;
     drawCanvasImgae();
 });
 
