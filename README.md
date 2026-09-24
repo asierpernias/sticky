@@ -11,11 +11,18 @@ An interactive sticker creator web page where you can upload a photo, customize 
 - Export to PNG, JPEG or WebP at 512x512, 256x256 or 128x128.
 - Live numeric values displayed next to each slider control.
 
+## Roadmap
+
+- Letting the user create stickersheets/multiple stickers.
+- Removing background option by using an API
+- Border depending on the actual shape not on the square of the image.
+- Adding text to the stickers.
+- Keeping better the values when scrolling down/up it doesn't look odd.
 ## Usage
 
-#### Option 1 (web version)
+#### Option 1 (deployed version)
 
-Open 
+Open [Sticker Creator!](https://asierpernias.github.io/sticky/)
 
 #### Option 2
 
